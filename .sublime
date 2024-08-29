@@ -1,0 +1,26 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+    "rulers": [
+        [80, "dotted", 2],
+        [100, "solid", 3],
+    ],
+    "spell_check": true,
+    "translate_tabs_to_spaces": true,
+    "draw_minimap_border": true,
+    "highlight_line": true,
+    "caret_style": "solid",
+    "block_caret": false,
+    "match_brackets_angle": true,
+    "ignored_packages":
+    [
+        "Vintage",
+    ],
+    "index_files": false,
+    "trim_trailing_white_space_on_save": "all",
+    "trim_only_modified_white_space": false,
+    "ensure_newline_at_eof_on_save": true,
+    "word_wrap": true,
+    "font_size": 10,
+    "color_scheme": "Mariana.sublime-color-scheme",
+}

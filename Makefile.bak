@@ -1,0 +1,64 @@
+.DEFAULT_GOAL := help
+
+SHELL := /bin/bash
+WORKDIR := .
+ENVDIR := $(WORKDIR)/.env
+ENV := $(ENVDIR)/bin
+ACTIVATE := . $(ENV)/activate
+
+COMPOSE_SERVICE_NAME := "web"
+
+# =============================================================================
+# === Set-up Targets.
+# =============================================================================
+##@ Set-up
+setup: ## Initiate Virtual Environment.
+	$(info Initiating Virtual Environment)
+	@virtualenv .env
+.PHONY: setup
+
+env: setup ## Activate Virtual Environment.
+	$(info Activating Virtual Environment)
+	$(ACTIVATE)
+.PHONY: env
+
+# =============================================================================
+# === Development Targets.
+# =============================================================================
+##@ Development
+install: env requirements.txt ## Install Requirements.
+	$(info Installing Requirements)
+	$(ENV)/pip install -U  pip
+	$(ENV)/pip install -Ur requirements.txt --no-cache-dir
+.PHONY: install
+
+test: install ## Run Tests.
+	$(info Running Tests)
+	$(ENV)/coverage run --source="." ./manage.py test --settings=settings.testing
+	$(ENV)/coverage report -m --skip-empty
+	$(ENV)/coverage html --skip-empty
+.PHONY: test
+
+lint: install ## Run Linter.
+	$(info Running Linter)
+	$(ENV)/pylint ddcore/ setup.py --reports=y > reports/pylint.report
+.PHONY: lint
+
+# =============================================================================
+# === Clean-up Targets.
+# =============================================================================
+##@ Clean-up
+clean: ## Clean up the Project Folders.
+	$(info Cleaning up Things)
+	@rm -rf __pycache__
+	@rm -rf *.pyc
+	@rm -rf .env
+.PHONY: clean
+
+# =============================================================================
+# === Helpers Targets.
+# =============================================================================
+##@ Helpers
+help: ## Display this Help.
+	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+.PHONY: help
