@@ -1,7 +1,8 @@
 """(C) 2013-2024 Copycat Software, LLC. All Rights Reserved."""
 
 from ddcore.models import View
-from ddcore.models.tests import GenericUserTestCase
+
+from . import GenericUserTestCase
 
 
 class ViewTestCase(GenericUserTestCase):
