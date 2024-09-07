@@ -47,11 +47,17 @@ class Rating(BaseModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -64,7 +70,7 @@ class Rating(BaseModel):
     """
 
     # -------------------------------------------------------------------------
-    # --- Basics
+    # --- Basics.
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         db_index=True,
@@ -74,14 +80,14 @@ class Rating(BaseModel):
         default=0)
 
     # -------------------------------------------------------------------------
-    # --- Significant Texts
+    # --- Significant Texts.
     review_text = models.TextField(
         null=True, blank=True,
         verbose_name=_("Review Text"),
         help_text=_("Review Text"))
 
     # -------------------------------------------------------------------------
-    # --- Content Type
+    # --- Content Type.
     content_type = models.ForeignKey(
         ContentType,
         null=True, blank=True, default=None,
