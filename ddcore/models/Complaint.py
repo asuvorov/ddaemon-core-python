@@ -51,11 +51,17 @@ class Complaint(BaseModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
-    created_by              : obj       User, created   the Object.
-    modified_by             : obj       User, modified  the Object.
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
+    created_by              : obj       User, created  the Object.
+    modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -68,7 +74,7 @@ class Complaint(BaseModel):
     """
 
     # -------------------------------------------------------------------------
-    # --- Basics
+    # --- Basics.
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         db_index=True,
@@ -78,7 +84,7 @@ class Complaint(BaseModel):
         help_text=_("Complaint Text"))
 
     # -------------------------------------------------------------------------
-    # --- Flags
+    # --- Flags.
     is_processed = models.BooleanField(
         default=False,
         verbose_name=_("Is processed?"),
@@ -89,7 +95,7 @@ class Complaint(BaseModel):
         help_text=_("Is Complaint deleted?"))
 
     # -------------------------------------------------------------------------
-    # --- Content Type
+    # --- Content Type.
     content_type = models.ForeignKey(
         ContentType,
         null=True, blank=True, default=None,
@@ -125,12 +131,12 @@ class Complaint(BaseModel):
         """Docstring."""
 
     # -------------------------------------------------------------------------
-    # --- Methods
+    # --- Methods.
     def email_notify_admins_complaint_created(self, request):
         """Send Notification to the Platform Admins."""
         for admin_name, admin_email in settings.ADMINS:
             # -----------------------------------------------------------------
-            # --- Render HTML Email Content
+            # --- Render HTML Email Content.
             greetings = _(
                 "Dear, %(user)s.") % {
                     "user":     admin_name,
@@ -149,7 +155,7 @@ class Complaint(BaseModel):
                 }
 
             # -----------------------------------------------------------------
-            # --- Send Email
+            # --- Send Email.
             send_templated_email(
                 template_subj={
                     "name":     "common/emails/complaint_created_adm_subject.txt",

@@ -49,11 +49,17 @@ class Newsletter(BaseModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
-    created_by              : obj       User, created   the Object.
-    modified_by             : obj       User, modified  the Object.
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
+    created_by              : obj       User, created  the Object.
+    modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -66,7 +72,7 @@ class Newsletter(BaseModel):
     """
 
     # -------------------------------------------------------------------------
-    # --- Basics
+    # --- Basics.
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         db_index=True,
@@ -87,17 +93,17 @@ class Newsletter(BaseModel):
         help_text=_("Newsletter Content"))
 
     # -------------------------------------------------------------------------
-    # --- Recipients
+    # --- Recipients.
     recipients = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         blank=True,
         related_name="newsletter_recipients")
 
     # -------------------------------------------------------------------------
-    # --- Flags
+    # --- Flags.
 
     # -------------------------------------------------------------------------
-    # --- Content Type
+    # --- Content Type.
     content_type = models.ForeignKey(
         ContentType,
         null=True, blank=True, default=None,

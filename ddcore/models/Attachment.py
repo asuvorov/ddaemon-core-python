@@ -46,11 +46,17 @@ class TemporaryFile(BaseModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -148,11 +154,17 @@ class AttachedImage(BaseModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -175,14 +187,6 @@ class AttachedImage(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Flags.
-    is_hidden = models.BooleanField(
-        default=False,
-        verbose_name=_("Is hidden?"),
-        help_text=_("Is Attachment hidden?"))
-    is_private = models.BooleanField(
-        default=False,
-        verbose_name=_("Is private?"),
-        help_text=_("Is Attachment private?"))
 
     # -------------------------------------------------------------------------
     # --- Content Type.
@@ -240,11 +244,17 @@ class AttachedDocument(BaseModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -267,14 +277,6 @@ class AttachedDocument(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Flags.
-    is_hidden = models.BooleanField(
-        default=False,
-        verbose_name=_("Is hidden?"),
-        help_text=_("Is Attachment hidden?"))
-    is_private = models.BooleanField(
-        default=False,
-        verbose_name=_("Is private?"),
-        help_text=_("Is Attachment private?"))
 
     # -------------------------------------------------------------------------
     # --- Content Type.
@@ -336,11 +338,17 @@ class AttachedUrl(BaseModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -363,14 +371,6 @@ class AttachedUrl(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Flags.
-    is_hidden = models.BooleanField(
-        default=False,
-        verbose_name=_("Is hidden?"),
-        help_text=_("Is Attachment hidden?"))
-    is_private = models.BooleanField(
-        default=False,
-        verbose_name=_("Is private?"),
-        help_text=_("Is Attachment private?"))
 
     # -------------------------------------------------------------------------
     # --- Content Type.
@@ -423,11 +423,17 @@ class AttachedVideoUrl(BaseModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -445,14 +451,6 @@ class AttachedVideoUrl(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Flags.
-    is_hidden = models.BooleanField(
-        default=False,
-        verbose_name=_("Is hidden?"),
-        help_text=_("Is Attachment hidden?"))
-    is_private = models.BooleanField(
-        default=False,
-        verbose_name=_("Is private?"),
-        help_text=_("Is Attachment private?"))
 
     # -------------------------------------------------------------------------
     # --- Content Type.
