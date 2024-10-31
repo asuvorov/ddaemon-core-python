@@ -1,6 +1,6 @@
 """(C) 2013-2024 Copycat Software, LLC. All Rights Reserved."""
 
-import pendulum
+from datetime import datetime
 
 from django.contrib.contenttypes import fields
 from django.contrib.contenttypes.models import ContentType
@@ -30,7 +30,7 @@ def tmp_directory_path(instance, filename):
     """Temporary File Directory Path."""
     # --- File Will be uploaded to
     #     MEDIA_ROOT/tmp/<YYYY>/<MM>/<DD>/<filename>
-    today = pendulum.today().format("YYYY/MM/DD")
+    today = datetime.today().strftime("%Y/%m/%d")
 
     return f"tmp/{today}/{filename}"
 
