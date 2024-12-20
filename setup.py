@@ -103,6 +103,7 @@ setup(
         "simplejson==3.19.2",
         "termcolor==2.4.0",
         "tox==4.18.0",
+        "twine==6.0.1",
     ],
     test_suite="nose.collector",
     tests_require=["nose"],
