@@ -26,12 +26,14 @@ PhoneType = enum(
     HOME="0",
     WORK="1",
     MOBILE="2",
-    FAX="4")
+    GOOGLE="4",
+    FAX="8")
 phone_type_choices = [
     (PhoneType.NONE,    _("--------")),
     (PhoneType.HOME,    _("Home")),
     (PhoneType.WORK,    _("Work")),
     (PhoneType.MOBILE,  _("Mobile")),
+    (PhoneType.GOOGLE,  _("Google Voice")),
     (PhoneType.FAX,     _("Fax")),
 ]
 
@@ -40,12 +42,14 @@ PhoneTypeIcons = enum(
     HOME="0",
     WORK="1",
     MOBILE="2",
-    FAX="4")
+    GOOGLE="4",
+    FAX="8")
 phone_type_icons = [
     (PhoneTypeIcons.NONE,   ""),
     (PhoneTypeIcons.HOME,   "bi bi-telephone"),
     (PhoneTypeIcons.WORK,   "bi bi-building"),
     (PhoneTypeIcons.MOBILE, "bi bi-phone"),
+    (PhoneTypeIcons.GOOGLE, "bi bi-google"),
     (PhoneTypeIcons.FAX,    "bi bi-printer"),
 ]
 
@@ -73,11 +77,17 @@ class Phone(BaseModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -92,7 +102,7 @@ class Phone(BaseModel):
     """
 
     # -------------------------------------------------------------------------
-    # --- Basics
+    # --- Basics.
     phone_number = PhoneNumberField(
         db_index=True,
         null=True, blank=True,
@@ -110,7 +120,7 @@ class Phone(BaseModel):
         help_text=_("Phone Type"))
 
     # -------------------------------------------------------------------------
-    # --- Content Type
+    # --- Content Type.
     content_type = models.ForeignKey(
         ContentType,
         null=True, blank=True, default=None,
@@ -136,7 +146,7 @@ class Phone(BaseModel):
         return ""
 
     # -------------------------------------------------------------------------
-    # --- Properties
+    # --- Properties.
     @property
     def stat_phone_type_icon(self):
         """Return Phone Type's Representation as Icon."""

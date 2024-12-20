@@ -4,6 +4,7 @@ from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 
+from django_extensions.db.fields import ModificationDateTimeField
 from django_extensions.db.models import (
     TimeStampedModel,
     TitleDescriptionModel,
@@ -36,11 +37,17 @@ class BaseModel(TimeStampedModel):
     ----------
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -56,6 +63,23 @@ class BaseModel(TimeStampedModel):
         encoder=JSONEncoder,
         verbose_name=_("Custom Data"))
 
+    # -------------------------------------------------------------------------
+    # --- Flags.
+    is_hidden = models.BooleanField(
+        default=False,
+        verbose_name=_("Is hidden?"),
+        help_text=_("Is Object hidden?"))
+    is_private = models.BooleanField(
+        default=False,
+        verbose_name=_("Is private?"),
+        help_text=_("Is Object private?"))
+    is_deleted = models.BooleanField(
+        default=False,
+        verbose_name=_("Is deleted?"),
+        help_text=_("Is Object deleted?"))
+
+    # -------------------------------------------------------------------------
+    # --- Custom.
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         null=True, blank=True,
@@ -72,6 +96,18 @@ class BaseModel(TimeStampedModel):
         related_name="user_modified_%(class)s",
         verbose_name=_("Modified by"),
         help_text=_("User, modified the Object."))
+    deleted_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True, blank=True,
+        db_index=True,
+        on_delete=models.CASCADE,
+        related_name="user_deleted_%(class)s",
+        verbose_name=_("Deleted by"),
+        help_text=_("User, deleted the Object."))
+
+    # -------------------------------------------------------------------------
+    # --- Significant Dates.
+    deleted = ModificationDateTimeField(_("deleted"), auto_now=False, blank=True, null=True)
 
     class Meta:
         """Meta Class."""
@@ -119,7 +155,7 @@ class BaseModel(TimeStampedModel):
     # -------------------------------------------------------------------------
 
     # -------------------------------------------------------------------------
-    # --- Signals
+    # --- Signals.
     # -------------------------------------------------------------------------
     def pre_save(self, **kwargs):
         """Pre-save Object Signal."""
@@ -162,11 +198,17 @@ class TitleDescriptionBaseModel(BaseModel, TitleDescriptionModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -216,11 +258,17 @@ class TitleSlugDescriptionBaseModel(BaseModel, TitleSlugDescriptionModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------

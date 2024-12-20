@@ -52,7 +52,8 @@ DATABASES = {
         "HOST":     config("DB_HOST", default="", cast=str),
         "PORT":     config("DB_PORT", default="", cast=str),
         "OPTIONS": {
-            # "autocommit": True,
+            # "unix_socket":  "/var/run/mysqld/mysqld.sock",
+            # "autocommit":   True,
         }
     }
 }

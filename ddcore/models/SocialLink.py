@@ -115,11 +115,17 @@ class SocialLink(BaseModel):
 
     custom_data             : dict      Custom Data JSON Field.
 
+    is_hidden               : bool      Is Object hidden?
+    is_private              : bool      Is Object private?
+    is_deleted              : bool      Is Object deleted?
+
     created_by              : obj       User, created  the Object.
     modified_by             : obj       User, modified the Object.
+    deleted_by              : obj       User, deleted the Object.
 
     created                 : datetime  Timestamp the Object has been created.
     modified                : datetime  Timestamp the Object has been modified.
+    deleted                 : datetime  Timestamp the Object has been deleted.
 
     Methods
     -------
@@ -135,7 +141,7 @@ class SocialLink(BaseModel):
     """
 
     # -------------------------------------------------------------------------
-    # --- Basics
+    # --- Basics.
     social_app = models.CharField(
         max_length=16,
         choices=social_app_choices,
@@ -149,7 +155,7 @@ class SocialLink(BaseModel):
         help_text=_("Social Link"))
 
     # -------------------------------------------------------------------------
-    # --- Content Type
+    # --- Content Type.
     content_type = models.ForeignKey(
         ContentType,
         related_name="content_type_social_links",
@@ -159,13 +165,13 @@ class SocialLink(BaseModel):
     content_object = fields.GenericForeignKey("content_type", "object_id")
 
     # -------------------------------------------------------------------------
-    # --- Status
+    # --- Status.
 
     # -------------------------------------------------------------------------
-    # --- Significant Texts
+    # --- Significant Texts.
 
     # -------------------------------------------------------------------------
-    # --- Significant Dates
+    # --- Significant Dates.
 
     objects = SocialLinkManager()
 
@@ -183,7 +189,7 @@ class SocialLink(BaseModel):
         return self.__repr__()
 
     # -------------------------------------------------------------------------
-    # --- Properties
+    # --- Properties.
     @property
     def stat_social_app_icon(self):
         """Docstring."""
@@ -203,7 +209,7 @@ class SocialLink(BaseModel):
         return ""
 
     # -------------------------------------------------------------------------
-    # --- Signals
+    # --- Signals.
     def pre_save(self, **kwargs):
         """Docstring."""
 
