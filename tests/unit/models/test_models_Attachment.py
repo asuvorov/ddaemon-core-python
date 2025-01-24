@@ -12,7 +12,8 @@ from ddcore.models import (
     TemporaryFile,
     User,
     UserProfile)
-from ddcore.models.tests import TestUserProfile
+
+from . import GenericUserTestCase
 
 
 class TemporaryFileTestCase(TestCase):
@@ -48,7 +49,7 @@ class TemporaryFileTestCase(TestCase):
 class AttachedImageTestCase(TestCase):
     """AttachedImage Model Test Class."""
 
-    model = TestUserProfile  # Way to test the abstract UserProfile Model.
+    # model = TestUserProfile  # Way to test the abstract UserProfile Model.
 
     def setUp(self):
         """Constructor."""

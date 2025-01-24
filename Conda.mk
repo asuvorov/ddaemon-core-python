@@ -1,45 +1,50 @@
 .DEFAULT_GOAL := help
 
 ENV_NAME := core
-PY_VERSION := "3.10"
+PY_VERSION := "3.12"
 
 # =============================================================================
 # === (mini)Conda Targets.
 # =============================================================================
 ##@ Conda
-create: ## Create Conda Environment.
+ccreate: ## Create Conda Environment.
 	$(info Creating Conda Environment)
 	@conda env create -f environment.yml
-.PHONY: create
+.PHONY: ccreate
 
-update: ## Update Conda Environment.
+cupdate: ## Update Conda Environment.
 	$(info Updating Conda Environment)
 	@conda env update --file environment.yml --prune
-.PHONY: update
+.PHONY: cupdate
 
-clone: ## Create an identical Environment on the same or another Machine.
+cclone: ## Create an identical Environment on the same or another Machine.
 	$(info Creating an identical Environment)
 	@conda create --name $(ENV_NAME) --file spec-file.txt
-.PHONY: clone
+.PHONY: cclone
 
 # install: ## Install listed Packages into an existing Environment.
-# 	$(info Installing Conda Environment Packages)
-# 	@conda install --name $(ENV_NAME) --file spec-file.txt
+#   $(info Installing Conda Environment Packages)
+#   @conda install --name $(ENV_NAME) --file spec-file.txt
 # .PHONY: install
 
-activate: ## Activate Conda Environment.
+cactivate: ## Activate Conda Environment.
 	$(info Activating Conda Environment)
 	@conda activate $(ENV_NAME)
-.PHONY: activate
+.PHONY: cactivate
 
-export: ## Export Conda Environment.
+cexport: ## Export Conda Environment.
 	$(info Exporting Conda Environment)
 	@conda env export > environment.yml
 	@conda list --explicit > spec-file.txt
-.PHONY: export
+.PHONY: cexport
 
-remove: ## Remove Conda Environment.
+cremove: ## Remove Conda Environment.
 	$(info Removing Conda Environment)
 	@conda deactivate
 	@conda remove --name $(ENV_NAME) --all
-.PHONY: remove
+.PHONY: cremove
+
+cupgrade: ## Upgrade Conda.
+	$(info Upgrading Conda)
+	@conda conda update --force conda
+.PHONY: cupgrade

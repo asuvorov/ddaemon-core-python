@@ -10,7 +10,8 @@ from ddcore.models import (
     User,
     UserProfile,
     UserLogin)
-from ddcore.models.tests import GenericUserTestCase
+
+from . import GenericUserTestCase
 
 
 # class UserProfileTestCase(AbstractTestCase):
