@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 """
 (C) 2013-2024 Copycat Software Corporation. All Rights Reserved.
 
@@ -6,3 +7,6 @@ This Work contains valuable Trade Secrets of Copycat, and must be maintained in 
 Use of this Work is governed by the Terms and Conditions of a License Agreement with Copycat.
 
 """
+=======
+"""(C) 2013-2025 Copycat Software, LLC. All Rights Reserved."""
+>>>>>>> Stashed changes

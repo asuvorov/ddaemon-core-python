@@ -1,4 +1,4 @@
-"""(C) 2013-2024 Copycat Software, LLC. All Rights Reserved."""
+"""(C) 2013-2025 Copycat Software, LLC. All Rights Reserved."""
 
 from django.contrib.contenttypes import admin as ct_admin
 from django.utils.html import format_html

@@ -69,7 +69,7 @@ setup(
         "geoip2>=3.0.0",
         # "gitchangelog==3.0.4",
         "ipython==8.18.1",
-        "json-log-formatter==1.1",
+        "json-log-formatter==1.0",
         "mysqlclient==2.2.4",
         "pendulum==3.0.0",
         "pep257==0.7.0",

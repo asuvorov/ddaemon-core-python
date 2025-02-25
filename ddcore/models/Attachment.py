@@ -1,4 +1,4 @@
-"""(C) 2013-2024 Copycat Software, LLC. All Rights Reserved."""
+"""(C) 2013-2025 Copycat Software, LLC. All Rights Reserved."""
 
 from datetime import datetime
 
@@ -8,6 +8,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from .Base import BaseModel
+from .. import enum
 from ..Decorators import autoconnect
 from ..Utilities import get_youtube_video_id
 from ..uuids import get_unique_filename
@@ -18,6 +19,24 @@ from ..uuids import get_unique_filename
 # === TEMPORARY FILE MODEL
 # ===
 # =============================================================================
+
+# -----------------------------------------------------------------------------
+# --- Temporary File Model Choices.
+# -----------------------------------------------------------------------------
+UploadType = enum(
+    DOCUMENT="document",
+    IMAGE="image",
+    VIDEO="video",
+    AUDIO="audio",
+    OTHER="other")
+upload_type_choices = [
+    (UploadType.DOCUMENT,   _("Document")),
+    (UploadType.IMAGE,      _("Image")),
+    (UploadType.VIDEO,      _("Video")),
+    (UploadType.AUDIO,      _("Audio")),
+    (UploadType.OTHER,      _("Other")),
+]
+
 
 # -----------------------------------------------------------------------------
 # --- Temporary File Model Manager.
@@ -70,8 +89,15 @@ class TemporaryFile(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Basics.
+    # -------------------------------------------------------------------------
     file = models.FileField(upload_to=tmp_directory_path)
     name = models.CharField(max_length=255)
+
+    upload_type = models.CharField(
+        max_length=10,
+        choices=upload_type_choices, default=UploadType.OTHER,
+        verbose_name=_("Type"),
+        help_text=_("Upload Type"))
 
     # TODO Write cron job for deleting old, not used temporary files,
     # e.g. when submitting form was canceled.
@@ -178,6 +204,7 @@ class AttachedImage(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Basics.
+    # -------------------------------------------------------------------------
     name = models.CharField(
         db_index=True,
         max_length=255, null=True, blank=True,
@@ -187,9 +214,11 @@ class AttachedImage(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Flags.
+    # -------------------------------------------------------------------------
 
     # -------------------------------------------------------------------------
     # --- Content Type.
+    # -------------------------------------------------------------------------
     content_type = models.ForeignKey(
         ContentType,
         null=True, blank=True, default=None,
@@ -268,6 +297,7 @@ class AttachedDocument(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Basics.
+    # -------------------------------------------------------------------------
     name = models.CharField(
         db_index=True,
         max_length=255, null=True, blank=True,
@@ -277,9 +307,11 @@ class AttachedDocument(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Flags.
+    # -------------------------------------------------------------------------
 
     # -------------------------------------------------------------------------
     # --- Content Type.
+    # -------------------------------------------------------------------------
     content_type = models.ForeignKey(
         ContentType,
         null=True, blank=True, default=None,
@@ -362,6 +394,7 @@ class AttachedUrl(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Basics.
+    # -------------------------------------------------------------------------
     url = models.URLField()
     title = models.CharField(
         db_index=True,
@@ -371,9 +404,11 @@ class AttachedUrl(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Flags.
+    # -------------------------------------------------------------------------
 
     # -------------------------------------------------------------------------
     # --- Content Type.
+    # -------------------------------------------------------------------------
     content_type = models.ForeignKey(
         ContentType,
         null=True, blank=True, default=None,
@@ -447,13 +482,16 @@ class AttachedVideoUrl(BaseModel):
 
     # -------------------------------------------------------------------------
     # --- Basics.
+    # -------------------------------------------------------------------------
     url = models.URLField()
 
     # -------------------------------------------------------------------------
     # --- Flags.
+    # -------------------------------------------------------------------------
 
     # -------------------------------------------------------------------------
     # --- Content Type.
+    # -------------------------------------------------------------------------
     content_type = models.ForeignKey(
         ContentType,
         null=True, blank=True, default=None,
@@ -515,6 +553,7 @@ class AttachmentMixin:
 
     # -------------------------------------------------------------------------
     # --- Get List of Attachments.
+    # -------------------------------------------------------------------------
     @property
     def image_list(self):
         """Return a List of attached Images."""
