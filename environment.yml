@@ -1,5 +1,6 @@
 name: core
 channels:
+  - selfexplainml
   - conda-forge
   - defaults
 dependencies:
@@ -20,9 +21,11 @@ dependencies:
   - binaryornot=0.4.4=pyhd3eb1b0_1
   - blas=1.0=openblas
   - bleach=6.2.0=py310h06a4308_0
-  - boto3=1.36.26=pyhd8ed1ab_0
-  - botocore=1.36.26=pyge310_1234567_0
+  - boto3=1.37.0=pyhd8ed1ab_1
+  - botocore=1.37.0=pyge310_1234567_0
   - brotli-python=1.0.9=py310h6a678d5_8
+  - bump2version=1.0.1=py_0
+  - bumpversion=0.6.0=py_0
   - bzip2=1.0.8=h5eee18b_6
   - ca-certificates=2024.12.31=h06a4308_0
   - cachecontrol=0.14.0=py310h06a4308_1
@@ -141,7 +144,7 @@ dependencies:
   - pickleshare=0.7.5=pyhd3eb1b0_1003
   - pillow=9.4.0=py310h023d228_1
   - pip=24.2=py310h06a4308_0
-  - pkginfo=1.12.0=pyhd8ed1ab_1
+  - pkginfo=1.12.1.2=pyhd8ed1ab_0
   - platformdirs=4.3.6=pyhd8ed1ab_1
   - pluggy=1.5.0=pyhd8ed1ab_0
   - poetry=2.1.1=pyha804496_0
@@ -198,7 +201,7 @@ dependencies:
   - tox=4.24.1=pyh29332c3_0
   - traitlets=5.14.3=py310h06a4308_0
   - trove-classifiers=2024.10.14=py310h06a4308_0
-  - twine=6.1.0=pyh29332c3_0
+  - twine=6.0.1=pyhd8ed1ab_1
   - typing-extensions=4.12.2=hd8ed1ab_1
   - typing_extensions=4.12.2=pyha770c72_1
   - tzdata=2024b=h04d1e81_0
@@ -217,7 +220,6 @@ dependencies:
   - zstd=1.5.6=ha6fb4c9_0
   - pip:
       - astroid==3.1.0
-      - bump2version==1.0.1
       - django-ckeditor==6.7.1
       - django-js-asset==2.2.0
       - json-log-formatter==1.1

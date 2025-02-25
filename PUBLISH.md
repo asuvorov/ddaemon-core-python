@@ -21,5 +21,5 @@
    - To [PyPI](https://pypi.org/):
      
      ```bash
-     [~]$ twine upload dist/*
+     [~]$ twine upload -r pypi dist/*
      ```
