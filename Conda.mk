@@ -22,10 +22,10 @@ cclone: ## Create an identical Environment on the same or another Machine.
 	@conda create --name $(ENV_NAME) --file spec-file.txt
 .PHONY: cclone
 
-# install: ## Install listed Packages into an existing Environment.
-#   $(info Installing Conda Environment Packages)
-#   @conda install --name $(ENV_NAME) --file spec-file.txt
-# .PHONY: install
+install: ## Install listed Packages into an existing Environment.
+	$(info Installing Conda Environment Packages)
+	@conda install --name core --file spec-file.txt
+.PHONY: install
 
 cactivate: ## Activate Conda Environment.
 	$(info Activating Conda Environment)

@@ -104,6 +104,7 @@ https://repo.anaconda.com/pkgs/main/noarch/pure_eval-0.2.2-pyhd3eb1b0_0.conda
 https://conda.anaconda.org/conda-forge/noarch/pycodestyle-2.12.1-pyhd8ed1ab_1.conda
 https://repo.anaconda.com/pkgs/main/noarch/pycparser-2.21-pyhd3eb1b0_0.conda
 https://repo.anaconda.com/pkgs/main/linux-64/pygments-2.15.1-py310h06a4308_1.conda
+https://conda.anaconda.org/conda-forge/noarch/pymemcache-4.0.0-pyhd8ed1ab_1.conda
 https://repo.anaconda.com/pkgs/main/linux-64/pysocks-1.7.1-py310h06a4308_0.conda
 https://conda.anaconda.org/conda-forge/noarch/python-decouple-3.8-pyhff2d567_1.conda
 https://repo.anaconda.com/pkgs/main/linux-64/python-fastjsonschema-2.20.0-py310h06a4308_0.conda

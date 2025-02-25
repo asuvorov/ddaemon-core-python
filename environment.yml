@@ -155,6 +155,7 @@ dependencies:
   - pylint=3.3.2=pyhd8ed1ab_1
   - pylint-django=2.6.1=pyhd8ed1ab_1
   - pylint-plugin-utils=0.8.2=pyhd8ed1ab_0
+  - pymemcache=4.0.0=pyhd8ed1ab_1
   - pyproject-api=1.8.0=pyhd8ed1ab_1
   - pyproject_hooks=1.0.0=py310h06a4308_0
   - pysocks=1.7.1=py310h06a4308_0
@@ -217,6 +218,7 @@ dependencies:
   - pip:
       - astroid==3.1.0
       - bump2version==1.0.1
+      - django-ckeditor==6.7.1
       - django-js-asset==2.2.0
       - json-log-formatter==1.1
       - phonenumbers==8.13.48

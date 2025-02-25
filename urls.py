@@ -1,15 +1,4 @@
-<<<<<<< Updated upstream
-"""
-(C) 1995-2024 <YOUR_NAME_HERE> Software Corporation. All Rights Reserved.
-
-The Copyright Owner has not given any Authority for any Publication of this Work.
-This Work contains valuable Trade Secrets of <YOUR_NAME_HERE>, and must be maintained in Confidence.
-Use of this Work is governed by the Terms and Conditions of a License Agreement with <YOUR_NAME_HERE>.
-
-"""
-=======
 """(C) 2013-2025 Copycat Software, LLC. All Rights Reserved."""
->>>>>>> Stashed changes
 
 from django.conf import settings
 from django.conf.urls.static import static

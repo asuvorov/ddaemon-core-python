@@ -62,6 +62,7 @@ class TemporaryFile(BaseModel):
     ----------
     file                    : obj       File Object.
     name                    : str       File Name.
+    upload_type             : str       File Type.
 
     custom_data             : dict      Custom Data JSON Field.
 
