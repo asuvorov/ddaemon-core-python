@@ -40,7 +40,7 @@ cactivate: ## Activate Conda Environment.
 cexport: ## Export Conda Environment.
 	$(info Exporting Conda Environment)
 	@conda env export > environment.yml
-	@conda list --explicit > spec-file.txt
+	@conda list > spec-file.txt
 .PHONY: cexport
 
 cremove: ## Remove Conda Environment.
