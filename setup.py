@@ -1,4 +1,4 @@
-"""(C) 2013-2024 Copycat Software, LLC. All Rights Reserved."""
+"""(C) 2013-2025 Copycat Software, LLC. All Rights Reserved."""
 
 import os
 import re
@@ -53,6 +53,8 @@ setup(
         "Intended Audience :: Developers",
         "Intended Audience :: Information Technology",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        # "License-Expression: GPL-3.0",
+        # "License-File: LICENSE",
         "Natural Language :: English",
         "Operating System :: Microsoft :: Windows",
         "Operating System :: POSIX",
@@ -67,7 +69,6 @@ setup(
         "boto3==1.34.122",
         "beautifulsoup4==4.12.3",
         "bumpversion==0.6.0",
-        "cookiecutter==2.6.0",
         "coverage==7.5.0",
         "django-annoying==0.10.6",
         "django-ckeditor==6.7.1",
@@ -81,12 +82,11 @@ setup(
         "geoip2>=3.0.0",
         # "gitchangelog==3.0.4",
         "ipython==8.18.1",
-        "json-log-formatter==1.0",
+        "json-log-formatter==1.1",
         "mysqlclient==2.2.4",
         "pendulum==3.0.0",
         "pep257==0.7.0",
         "pep8==1.7.1",
-        "poetry==1.8.3",
         # "psycopg2-binary==2.9.5",
         "pycodestyle==2.11.1",
         "pydocstyle==6.3.0",
@@ -102,8 +102,6 @@ setup(
         "requests==2.31.0",
         "simplejson==3.19.2",
         "termcolor==2.4.0",
-        "tox==4.18.0",
-        "twine==6.0.1",
     ],
     test_suite="nose.collector",
     tests_require=["nose"],

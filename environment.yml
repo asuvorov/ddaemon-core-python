@@ -1,5 +1,6 @@
 name: core
 channels:
+  - selfexplainml
   - conda-forge
   - defaults
 dependencies:
@@ -8,6 +9,7 @@ dependencies:
   - aiohappyeyeballs=2.4.0=py310h06a4308_0
   - aiohttp=3.10.5=py310h5eee18b_0
   - aiosignal=1.2.0=pyhd3eb1b0_0
+  - anyio=4.6.2=py310h06a4308_0
   - arrow=1.3.0=py310h06a4308_0
   - asgiref=3.8.1=py310h06a4308_0
   - asttokens=2.0.5=pyhd3eb1b0_0
@@ -15,19 +17,21 @@ dependencies:
   - attrs=24.2.0=py310h06a4308_0
   - backports.tarfile=1.2.0=py310h06a4308_0
   - backports.zoneinfo=0.2.1=py310hff52083_9
-  - beautifulsoup4=4.12.3=pyha770c72_1
+  - beautifulsoup4=4.13.3=pyha770c72_0
   - binaryornot=0.4.4=pyhd3eb1b0_1
   - blas=1.0=openblas
   - bleach=6.2.0=py310h06a4308_0
-  - boto3=1.36.4=pyhd8ed1ab_0
-  - botocore=1.36.4=pyge310_1234567_0
+  - boto3=1.37.0=pyhd8ed1ab_1
+  - botocore=1.37.0=pyge310_1234567_0
   - brotli-python=1.0.9=py310h6a678d5_8
+  - bump2version=1.0.1=py_0
+  - bumpversion=0.6.0=py_0
   - bzip2=1.0.8=h5eee18b_6
   - ca-certificates=2024.12.31=h06a4308_0
   - cachecontrol=0.14.0=py310h06a4308_1
   - cachecontrol-with-filecache=0.14.0=py310h06a4308_1
   - cachetools=5.5.0=pyhd8ed1ab_1
-  - certifi=2024.12.14=py310h06a4308_0
+  - certifi=2025.1.31=py310h06a4308_0
   - cffi=1.17.1=py310h1fdaa30_0
   - chardet=5.2.0=py310hff52083_2
   - charset-normalizer=3.3.2=pyhd3eb1b0_0
@@ -36,7 +40,7 @@ dependencies:
   - cmarkgfm=2022.10.27=py310h5eee18b_0
   - colorama=0.4.6=py310h06a4308_0
   - cookiecutter=2.6.0=pyhd8ed1ab_1
-  - coverage=7.6.10=py310h89163eb_0
+  - coverage=7.6.12=py310h89163eb_0
   - crashtest=0.4.1=py310h06a4308_0
   - cryptography=43.0.3=py310h7825ff9_1
   - dbus=1.13.18=hb2f20db_0
@@ -45,21 +49,26 @@ dependencies:
   - distlib=0.3.8=py310h06a4308_0
   - django=4.2.13=pyhd8ed1ab_0
   - django-annoying=0.10.7=pyhd8ed1ab_1
+  - django-countries=7.6.1=pyhd8ed1ab_1
   - django-extensions=3.2.3=pyhd8ed1ab_1
   - django-ipware=7.0.1=pyhd8ed1ab_1
   - django-phonenumber-field=8.0.0=pyhff2d567_1
-  - django-storages=1.14.4=pyhd8ed1ab_1
+  - django-storages=1.14.5=pyhd8ed1ab_0
   - docutils=0.18.1=py310h06a4308_3
   - dulwich=0.22.7=py310h4aa5aa6_0
   - exceptiongroup=1.2.0=py310h06a4308_0
   - executing=0.8.3=pyhd3eb1b0_0
   - expat=2.6.4=h6a678d5_0
   - filelock=3.16.1=pyhd8ed1ab_1
+  - findpython=0.6.2=pyhff2d567_1
   - freetype=2.12.1=h267a509_2
   - frozenlist=1.4.0=py310h5eee18b_0
   - gettext=0.21.0=hf68c758_0
   - glib=2.72.1=h6239696_0
   - glib-tools=2.72.1=h6239696_0
+  - h11=0.14.0=py310h06a4308_0
+  - httpcore=1.0.2=py310h06a4308_0
+  - httpx=0.27.0=py310h06a4308_0
   - icu=70.1=h27087fc_0
   - id=1.5.0=pyh29332c3_0
   - idna=3.7=py310h06a4308_0
@@ -67,7 +76,7 @@ dependencies:
   - importlib_metadata=7.0.1=hd3eb1b0_0
   - importlib_resources=6.4.0=py310h06a4308_0
   - iniconfig=1.1.1=pyhd3eb1b0_0
-  - ipython=8.31.0=pyh707e725_0
+  - ipython=8.32.0=pyh907856f_0
   - isort=5.13.2=py310h06a4308_0
   - jaraco.classes=3.2.1=pyhd3eb1b0_0
   - jaraco.context=6.0.0=py310h06a4308_0
@@ -119,7 +128,7 @@ dependencies:
   - mysql-common=9.0.1=h266115a_3
   - mysql-connector-c=6.1.11=h659d440_1008
   - mysql-libs=9.0.1=he0572af_3
-  - mysqlclient=2.2.7=py310hf71b8c6_0
+  - mysqlclient=2.2.7=py310h8c668a6_1
   - ncurses=6.4=h6a678d5_0
   - numpy=1.26.4=py310heeff2f4_0
   - numpy-base=1.26.4=py310h8a23956_0
@@ -127,6 +136,7 @@ dependencies:
   - openssl=3.4.0=hb9d3cd8_0
   - packaging=24.2=py310h06a4308_0
   - parso=0.8.3=pyhd3eb1b0_0
+  - pbs-installer=2025.2.12=pyhd8ed1ab_0
   - pcre=8.45=h295c915_0
   - pcre2=10.44=hba22ea6_2
   - pendulum=3.0.0=py310h505e2c1_1
@@ -134,10 +144,10 @@ dependencies:
   - pickleshare=0.7.5=pyhd3eb1b0_1003
   - pillow=9.4.0=py310h023d228_1
   - pip=24.2=py310h06a4308_0
-  - pkginfo=1.12.0=pyhd8ed1ab_1
+  - pkginfo=1.12.1.2=pyhd8ed1ab_0
   - platformdirs=4.3.6=pyhd8ed1ab_1
   - pluggy=1.5.0=pyhd8ed1ab_0
-  - poetry=2.0.1=pyha804496_0
+  - poetry=2.1.1=pyha804496_0
   - poetry-plugin-export=1.8.0=pyhd8ed1ab_1
   - prompt-toolkit=3.0.43=py310h06a4308_0
   - ptyprocess=0.7.0=pyhd3eb1b0_2
@@ -148,6 +158,7 @@ dependencies:
   - pylint=3.3.2=pyhd8ed1ab_1
   - pylint-django=2.6.1=pyhd8ed1ab_1
   - pylint-plugin-utils=0.8.2=pyhd8ed1ab_0
+  - pymemcache=4.0.0=pyhd8ed1ab_1
   - pyproject-api=1.8.0=pyhd8ed1ab_1
   - pyproject_hooks=1.0.0=py310h06a4308_0
   - pysocks=1.7.1=py310h06a4308_0
@@ -155,12 +166,13 @@ dependencies:
   - python=3.10.13=hd12c33a_1_cpython
   - python-build=1.2.2.post1=pyhff2d567_1
   - python-dateutil=2.9.0post0=py310h06a4308_2
+  - python-decouple=3.8=pyhff2d567_1
   - python-fastjsonschema=2.20.0=py310h06a4308_0
   - python-installer=0.7.0=pyhd3eb1b0_1
   - python-ipware=3.0.0=pyhd8ed1ab_0
   - python-slugify=5.0.2=pyhd3eb1b0_0
   - python_abi=3.10=2_cp310
-  - pytz=2024.2=pyhd8ed1ab_1
+  - pytz=2025.1=pyhd8ed1ab_0
   - pyyaml=6.0.2=py310ha75aee5_1
   - rapidfuzz=3.5.2=py310h6a678d5_0
   - readline=8.2=h5eee18b_0
@@ -174,6 +186,7 @@ dependencies:
   - setuptools=75.1.0=py310h06a4308_0
   - shellingham=1.5.0=py310h06a4308_0
   - six=1.16.0=pyhd3eb1b0_1
+  - sniffio=1.3.0=py310h06a4308_0
   - snowballstemmer=2.2.0=pyhd3eb1b0_0
   - soupsieve=2.5=py310h06a4308_0
   - sqlite=3.31.1=h7b6447c_0
@@ -188,7 +201,7 @@ dependencies:
   - tox=4.24.1=pyh29332c3_0
   - traitlets=5.14.3=py310h06a4308_0
   - trove-classifiers=2024.10.14=py310h06a4308_0
-  - twine=6.1.0=pyh29332c3_0
+  - twine=6.0.1=pyhd8ed1ab_1
   - typing-extensions=4.12.2=hd8ed1ab_1
   - typing_extensions=4.12.2=pyha770c72_1
   - tzdata=2024b=h04d1e81_0
@@ -203,11 +216,13 @@ dependencies:
   - yarl=1.11.0=py310h5eee18b_0
   - zipp=3.20.2=py310h06a4308_0
   - zlib=1.3.1=hb9d3cd8_2
+  - zstandard=0.23.0=py310h2c38b39_1
   - zstd=1.5.6=ha6fb4c9_0
   - pip:
       - astroid==3.1.0
-      - bump2version==1.0.1
+      - django-ckeditor==6.7.1
       - django-js-asset==2.2.0
+      - json-log-formatter==1.1
       - phonenumbers==8.13.48
       - poetry-core==1.9.0
 prefix: /home/artem/miniconda3/envs/core
