@@ -1,12 +1,17 @@
 .DEFAULT_GOAL := help
 
 ENV_NAME := core
-PY_VERSION := "3.10"
+PY_VERSION := "3.12"
 
 # =============================================================================
 # === (mini)Conda Targets.
 # =============================================================================
 ##@ Conda
+cclean: ## Clean up Conda.
+	$(info Cleaning up Conda)
+	@conda clean --all -y
+.PHONY: cclean
+
 ccreate: ## Create Conda Environment.
 	$(info Creating Conda Environment)
 	@conda env create -f environment.yml
@@ -24,7 +29,7 @@ cclone: ## Create an identical Environment on the same or another Machine.
 
 cinstall: ## Install listed Packages into an existing Environment.
 	$(info Installing Conda Environment Packages)
-	@conda install --name core --file spec-file.txt
+	@conda install --name $(ENV_NAME) --file spec-file.txt
 .PHONY: cinstall
 
 cactivate: ## Activate Conda Environment.
