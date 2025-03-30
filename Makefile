@@ -1,3 +1,5 @@
+include Conda.mk
+
 .DEFAULT_GOAL := help
 
 SHELL := /bin/bash
@@ -61,7 +63,7 @@ install: env requirements.txt ## Install Requirements.
 # === Development Targets.
 # =============================================================================
 ##@ Development
-test: run migrate ## Run Tests.
+test: run-test migrate ## Run Tests.
 	$(info Running Tests)
 	ifeq ($(OS), Windows_NT)
 		@docker-compose -f docker-compose.test.yml run $(COMPOSE_SERVICE_NAME) coverage run --source="." ./manage.py test --settings=settings.testing && coverage report -m --skip-empty && coverage html --skip-empty
@@ -124,9 +126,14 @@ run: build ## Start the Compose.
 .PHONY: run
 
 run-local: install ## Start the Compose, bypassing Build Steps.
-	$(info Starting the Compose)
-	@docker-compose -f docker-compose.local.yml up # -d
+	$(info Starting the Compose, bypassing Build Steps)
+	@docker-compose -f docker-compose.local.yml up -d
 .PHONY: run-local
+
+run-test: build ## Start the Compose.
+	$(info Starting the Compose)
+	@docker-compose -f docker-compose.test.yml up # -d
+.PHONY: run-test
 
 down: ## Clean up the Project Folders.
 	$(info Cleaning Things )
@@ -135,6 +142,7 @@ down: ## Clean up the Project Folders.
 
 migrate:
 	$(info Migrating)
+	@docker-compose exec ddcore python manage.py createcachetable
 	@docker-compose exec ddcore python manage.py migrate
 .PHONY: migrate
 

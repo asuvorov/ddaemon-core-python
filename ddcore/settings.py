@@ -1,4 +1,4 @@
-"""(C) 2013-2024 Copycat Software, LLC. All Rights Reserved."""
+"""(C) 2013-2025 Copycat Software, LLC. All Rights Reserved."""
 
 import os
 import os.path
@@ -52,7 +52,8 @@ DATABASES = {
         "HOST":     config("DB_HOST", default="", cast=str),
         "PORT":     config("DB_PORT", default="", cast=str),
         "OPTIONS": {
-            # "autocommit": True,
+            # "unix_socket":  "/var/run/mysqld/mysqld.sock",
+            # "autocommit":   True,
         }
     }
 }
